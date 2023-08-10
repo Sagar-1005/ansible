@@ -1,0 +1,11 @@
+---
+- name: My first ansible program
+  connection: network_cli
+  gather_facts: false
+  hosts: all
+  tasks:
+      - name: Getconfig
+        ios_facts:
+      - name : config
+        debug:
+          msg: "{{hostvars[inventory_hostname]}}"

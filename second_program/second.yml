@@ -1,0 +1,21 @@
+- name: Edit config
+  connection: network_cli
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Debug ansible_network_os
+      debug:
+        var: ansible_network_os
+
+    - name: get config of ios device
+      ios_facts:
+    - name: Disply config
+      debug:
+        msg: " hostname {{ansible_net_hostname}} and ios {{ansible_net_version}}"
+    - name: create User
+      ios_config:
+        backup: yes
+        lines:
+          - username sagar priv 15 password sagar
+    - name: Get config
+      ios_facts:

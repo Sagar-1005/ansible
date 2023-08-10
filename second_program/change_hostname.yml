@@ -1,0 +1,24 @@
+---
+- name: Edit config
+  connection: network_cli
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: get config of ios device
+      ios_facts:
+        gather_subset: all
+    - name: Disply config
+      debug:
+        msg: " hostname {{ansible_net_hostname}} and ios {{ansible_net_version}}"
+    - name: create loopback
+      ios_config:
+        backup: yes
+        lines:
+          - interface loopback 33
+          - ip address 33.33.33.33 255.255.255.0
+          - description with ansible
+    - name: Get config
+      ios_facts:
+        gather_subset: all
+
+
