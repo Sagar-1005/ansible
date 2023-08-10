@@ -1,11 +1,25 @@
 ---
 - name: My first ansible program
-  connection: network_cli
-  gather_facts: false
-  hosts: all
+  hosts: device_group
   tasks:
-      - name: Getconfig
-        ios_facts:
-      - name : config
-        debug:
-          msg: "{{hostvars[inventory_hostname]}}"
+    - name: Gather IOS task 02
+      ios_facts:
+        gather_subset: all
+      register: result
+    - name: Print result
+      debug:
+        var: result
+    - name: Gather IOS harware
+      ios_facts:
+        gather_subset: hardware
+      register: hw
+    - name: Print hardware
+      debug:
+        var: hw
+    - name: Gather IOS task 02
+      ios_facts:
+        gather_subset: interfaces
+      register: int
+    - name: Print interfaces
+      debug:
+        var: int
