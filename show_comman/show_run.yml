@@ -1,0 +1,25 @@
+---
+- name: Cisco Enable Password
+  hosts: device_group
+    # become: yes
+    # become_method: enable
+    # vars:
+    #   ansible_become_password: cisco 
+  tasks:
+    - name: Get facts
+      debug:
+        msg:
+          - "Hostname is {{ansible_net_hostname}}"
+    - name: Execute show command
+      ios_command:
+        commands:
+          - show run
+    - name: Get facts
+      ios_facts:
+        gather_subset: all
+      register: saved_facts
+
+    - debug:
+          var: saved_facts
+    - debug:
+          msg: "{{saved_facts['ansible_facts']['ansible_net_hostname']}}"
