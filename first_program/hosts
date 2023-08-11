@@ -1,7 +1,7 @@
 [device1]
 192.168.188.130
 [device2]
-192.168.188.129 ansible_user=admin1 ansible_password=cisco1
+192.168.188.129
 [device3]
 192.168.188.131
 [device_group:children]
