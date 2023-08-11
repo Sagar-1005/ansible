@@ -1,0 +1,18 @@
+[device1]
+192.168.188.130
+[device2]
+192.168.188.129 ansible_user=admin1 ansible_password=cisco1
+[device3]
+192.168.188.131
+[device_group:children]
+device1
+device2
+device3
+[device_group:vars]
+ansible_connection=network_cli
+ansible_network_os=ios
+ansible_user=admin
+ansible_password=cisco
+ansible_become=yes
+ansible_become_method=enable
+ansible_become_pass=cisco
