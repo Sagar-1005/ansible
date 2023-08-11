@@ -2,24 +2,11 @@
 - name: My first ansible program
   hosts: device_group
   tasks:
-    - name: Gather IOS task 02
-      ios_facts:
-        gather_subset: all
-      register: result
-    - name: Print result
+    - name: Execute show commands
+      ios_command:
+        command:
+          - show run
+          - sh ip int bri
+        register: show_output
       debug:
-        var: result
-    - name: Gather IOS harware
-      ios_facts:
-        gather_subset: hardware
-      register: hw
-    - name: Print hardware
-      debug:
-        var: hw
-    - name: Gather IOS task 02
-      ios_facts:
-        gather_subset: interfaces
-      register: int
-    - name: Print interfaces
-      debug:
-        var: int
+        var: show_output
