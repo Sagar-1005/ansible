@@ -1,0 +1,17 @@
+---
+- name: List of interfaces
+  hosts: device_group
+  gather_facts: false
+  tasks:
+    - name: Gather interface information
+      ios_facts:
+        gather_network_resources: interfaces
+      register: interface
+
+    - name: Print interface names
+      debug:
+        msg: "Interface: {{ item.key }}"
+      loop: "{{ interface['ansible_facts']['ansible_net_interfaces'] | dict2items }}"
+      loop_control:
+        label: "{{ item.key }}"
+

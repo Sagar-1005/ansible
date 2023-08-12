@@ -1,0 +1,22 @@
+---
+- name: My first ansible program
+  hosts: device_group
+  tasks:
+    - name: Execute show commands
+      ios_command:
+        commands:
+          - show run
+          - sh ip int bri
+      register: show_output
+    - debug:
+        msg: 
+          - "{{show_output.stdout_lines[1]}}"
+    - name: check conditions
+      ios_command:
+        commands:
+          - show run
+          - sh ip int bri
+        match: any
+        wait_for:
+         - result[0] contains 22.22.22.22
+         - result[1] contains GigabitEthernet0/0
