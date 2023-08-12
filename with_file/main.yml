@@ -1,0 +1,18 @@
+---
+- name: config from file
+  hosts: routers_with_pass
+  gather_facts: false
+  tasks:
+    - name: take input from file
+      ios_config:
+        src: config.txt
+        diff_against: startup
+        save_when: modified
+      
+    - name: get facts
+      ios_facts:
+        gather_subset: all
+    
+    - debug:
+        msg: "{{ ansible_net_interfaces }}"
+

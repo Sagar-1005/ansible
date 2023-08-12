@@ -4,9 +4,9 @@
   tasks:
     - name: Execute show commands
       ios_command:
-        command:
+        commands:
           - show run
           - sh ip int bri
-        register: show_output
-      debug:
+      register: show_output
+    - debug:
         var: show_output
