@@ -1,0 +1,34 @@
+---
+- name: ios_interface config
+  hosts: device_group
+  tasks:
+    # - name: interface_gig0/3 config
+    #   ios_interfaces:
+    #     config:
+    #       - name: GigabitEthernet0/2
+    #         description: sagar
+    #         enabled: yes
+    #         duplex: full
+    #         speed: 100
+    #     state: merged
+    #   register: int
+    # - debug:
+    #     var: int
+    # - debug:
+    #     var: int.before
+    # - debug:
+    #     var: int.commands
+    # - debug:
+    #     var: int.after
+    - name: interface_gig0/3 config
+      ios_interfaces:
+        config:
+          - name: GigabitEthernet0/2
+        state: deleted
+      register: int
+    - debug:
+        var: int.before
+    - debug:
+        var: int.commands
+    - debug:
+        var: int.after

@@ -14,9 +14,6 @@ R3 ansible_host=192.168.188.131
 ansible_user=admin
 ansible_password=cisco
 
-[switches]
-SW1 ansible_host=192.168.188.129 ansible_user=admin ansible_password=cisco
-
 [device_group:children]
 routers_with_ssh_key
 routers_with_pass
