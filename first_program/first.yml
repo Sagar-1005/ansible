@@ -3,7 +3,7 @@
   hosts: device_group
   tasks:
     - name: Execute show commands
-      ios_command:
+      cisco.ios.ios_command:
         commands:
           - show run
           - sh ip int bri
