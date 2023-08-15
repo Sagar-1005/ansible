@@ -2,6 +2,7 @@
 - name: IOS config
   hosts: routes
   gather_facts: false
+  ansible_connection: network cli
 
   tasks:
     # - name: congig
