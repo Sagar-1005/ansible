@@ -1,8 +1,9 @@
+---
 - name: IOS config
   hosts: device_group
   gather_facts: false
   collections:
-    - /home/sagar/.ansible/collections/ansible_collections
+    - /home/sagar/.ansible/collections
 
   tasks:
     # - name: congig
