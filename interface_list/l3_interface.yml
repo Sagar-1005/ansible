@@ -1,0 +1,17 @@
+---
+- name: List of interfaces
+  hosts: routers_with_pass
+  gather_facts: false
+
+  tasks:
+    - name: configure access
+      ios_l3_interfaces:
+        config:
+          - name: GigabitEthernet0/3
+            ipv4:
+              - address: 12.2.2.5 255.255.255.0
+        state: merged
+      register: int
+    - debug:
+        var: int.commands
+
