@@ -1,0 +1,15 @@
+---
+- name: List of interfaces
+  hosts: switches
+  gather_facts: false
+  tasks:
+    - name: configure access
+      ios_l2_interfaces:
+        config:
+          - name: GigabitEthernet0/2
+            access:
+              vlan 10
+        state: merged
+        register: int
+    - debug:
+        var: int.commands

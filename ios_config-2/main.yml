@@ -1,7 +1,8 @@
 ---
 - name: IOS config
-  hosts: device_group
+  hosts: routes
   gather_facts: false
+  ansible_connection: network cli
 
   tasks:
     # - name: congig
