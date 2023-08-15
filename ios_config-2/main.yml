@@ -1,6 +1,6 @@
 ---
 - name: IOS config
-  hosts: device_group
+  hosts: routes
   gather_facts: false
 
   tasks:
